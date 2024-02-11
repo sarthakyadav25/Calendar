@@ -60,24 +60,23 @@ function displayTimer() {
     ];
 }
 
+const hours = new Date().getHours();
+const minutes = new Date().getMinutes();
+const seconds = new Date().getSeconds();
 //Display time
 
 timerRef.innerHTML =  `${hours}:${minutes}:${seconds}`;
 
 //Alarm
 
-alarmsArray.forEach((alarm, index) =>{
 
+alarmsArray.forEach((alarm, index) => {
     if (alarm.isActive) {
-
-        if (`${alarm.alarmHouz}:$(alarm.alazmMinute) ${hours}:${minutes}`){
-
-        alarmSound.play();
-
-        alarmSound. Loop = true;
+        if (`${alarm.alarmHour}:${alarm.alarmMinute} ${hours}:${minutes}`) {
+            alarmSound.play();
+            alarmSound.loop = true;
         }
-}
-
+    }
 });
 
 const inputCheck = (inputvalue) =>{
@@ -102,7 +101,7 @@ const createAlarm  = (alarmobj) =>{
 
     //Keys from object
 
-    const {id, alarmHour, alarmMinute} =  alarmObj;
+    const {id, alarmHour, alarmMinute} =  alarmobj;
 
     //Alarm div
 
